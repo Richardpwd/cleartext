@@ -348,17 +348,22 @@ input:focus-visible {
 }
 
 .ad-placeholder {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 130px;
+  width: 100%;
+  max-width: 100%;
+  min-height: 150px;
+  margin: 0 auto;
   background: linear-gradient(135deg, var(--surface-soft), #f5f7ff);
   border: 1px dashed var(--border);
   border-radius: 24px;
   padding: 22px;
   text-align: center;
   color: var(--text-muted);
+  overflow: hidden;
 }
 
 .ad-placeholder::after {
@@ -368,15 +373,27 @@ input:focus-visible {
   border-radius: 24px;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
   opacity: 0.1;
+  pointer-events: none;
 }
 
-.ad-placeholder.top-banner {
+.ad-placeholder.top-banner,
+.ad-placeholder.bottom-banner {
   min-height: 150px;
 }
 
-.ad-label {
+.ad-placeholder.bottom-banner {
+  min-height: 140px;
+}
+
+.ad-placeholder .ad-label {
   font-weight: 700;
   margin-bottom: 10px;
+}
+
+.ad-placeholder p,
+.ad-placeholder small {
+  position: relative;
+  z-index: 1;
 }
 
 .app-footer {
@@ -503,8 +520,14 @@ input:focus-visible {
 
   .hero-card,
   .card,
-  .document-card {
+  .document-card,
+  .ad-placeholder {
     padding: 20px;
+  }
+
+  .ad-placeholder {
+    min-height: 120px;
+    border-radius: 20px;
   }
 
   .actions-grid {
