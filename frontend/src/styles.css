@@ -128,12 +128,14 @@ input:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 28px;
+  position: relative;
 }
 
 .hero-card,
 .card,
 .document-card {
   position: relative;
+  z-index: 1;
   min-width: 0;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -203,6 +205,8 @@ input:focus-visible {
 }
 
 .theme-toggle {
+  position: relative;
+  z-index: 2;
   background: var(--primary);
   color: #fff;
   padding: 14px 24px;
@@ -349,6 +353,7 @@ input:focus-visible {
 
 .ad-placeholder {
   position: relative;
+  z-index: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -366,6 +371,12 @@ input:focus-visible {
   overflow: hidden;
 }
 
+.ad-placeholder ins.adsbygoogle {
+  width: 100% !important;
+  min-height: 90px;
+  display: block;
+}
+
 .ad-placeholder::after {
   content: '';
   position: absolute;
@@ -378,11 +389,11 @@ input:focus-visible {
 
 .ad-placeholder.top-banner,
 .ad-placeholder.bottom-banner {
-  min-height: 150px;
+  min-height: 240px;
 }
 
 .ad-placeholder.bottom-banner {
-  min-height: 140px;
+  min-height: 220px;
 }
 
 .ad-placeholder .ad-label {
