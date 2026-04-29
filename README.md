@@ -9,6 +9,13 @@ Projeto com frontend em React e backend em Node.js + Express para melhorar texto
 
 ## Como rodar
 
+### Raiz do projeto
+
+1. Execute `npm install` na raiz do projeto.
+2. Execute `npm run dev` para iniciar apenas o frontend.
+3. Execute `npm run dev:backend` em outro terminal para iniciar a API.
+4. Execute `npm run dev:all` para iniciar frontend e backend juntos.
+
 ### Backend
 
 1. Abra o terminal em `backend/`
