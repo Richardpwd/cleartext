@@ -11,7 +11,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/text', textRoutes);
+app.use('/_/backend/api/text', textRoutes);
 
 app.use((req, res, next) => {
   res.status(404).json({ error: 'Rota não encontrada' });
@@ -22,6 +22,10 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).json({ error: err.message || 'Erro interno do servidor' });
 });
 
-app.listen(port, () => {
-  console.log(`ResolveTexto API rodando em http://localhost:${port}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(port, () => {
+    console.log(`ResolveTexto API rodando em http://localhost:${port}`);
+  });
+}
+
+module.exports = app;

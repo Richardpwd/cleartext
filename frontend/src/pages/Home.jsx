@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Header from '../components/Header';
 import TextEditor from '../components/TextEditor';
 import ResultBox from '../components/ResultBox';
@@ -7,11 +7,11 @@ import Footer from '../components/Footer';
 
 // As rotas já estão preparadas para uma futura integração com IA no backend.
 const apiRoutes = {
-  summarize: '/api/text/summarize',
-  correct: '/api/text/correct',
-  formal: '/api/text/formal',
-  simple: '/api/text/simple',
-  whatsapp: '/api/text/whatsapp',
+  summarize: '/_/backend/api/text/summarize',
+  correct: '/_/backend/api/text/correct',
+  formal: '/_/backend/api/text/formal',
+  simple: '/_/backend/api/text/simple',
+  whatsapp: '/_/backend/api/text/whatsapp',
 };
 
 function countWords(text) {
@@ -67,6 +67,11 @@ function Home() {
     setResult('');
     setMessage('');
   }
+
+  useEffect(() => {
+    document.body.classList.remove('light', 'dark');
+    document.body.classList.add(theme);
+  }, [theme]);
 
   function toggleTheme() {
     setTheme((current) => (current === 'dark' ? 'light' : 'dark'));
