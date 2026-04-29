@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const ADSENSE_CLIENT_ID = 'ca-pub-XXXXXXXXXXXXXXXX';
+const ADSENSE_CLIENT_ID = 'ca-pub-3497814867552997';
 const AD_SLOTS = {
   'top-banner': '1234567890',
   'bottom-banner': '0987654321',
