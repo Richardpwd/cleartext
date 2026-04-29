@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "npm run build --prefix frontend && node scripts/copy-dist.js",
+    "build": "npm install --prefix frontend && npm run build --prefix frontend && node scripts/copy-dist.js",
     "start": "npm run dev",
     "dev": "npm run dev:frontend",
     "dev:frontend": "npm run dev --prefix frontend",

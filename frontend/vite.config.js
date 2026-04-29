@@ -8,5 +8,16 @@ export default defineConfig({
     proxy: {
       '/_/backend/api': 'http://localhost:5000'
     }
+  },
+  build: {
+    target: 'es2020',
+    cssCodeSplit: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ['react', 'react-dom', 'react-router-dom']
+        }
+      }
+    }
   }
 });

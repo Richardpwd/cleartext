@@ -1,7 +1,9 @@
 import { Routes, Route, Link } from 'react-router-dom';
-import Home from './pages/Home';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import Terms from './pages/Terms';
+import { Suspense, lazy } from 'react';
+
+const Home = lazy(() => import('./pages/Home'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const Terms = lazy(() => import('./pages/Terms'));
 
 function App() {
   return (
@@ -19,11 +21,13 @@ function App() {
       </header>
 
       <main className="app-content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/terms" element={<Terms />} />
-        </Routes>
+        <Suspense fallback={<div className="loading-screen">Carregando...</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<Terms />} />
+          </Routes>
+        </Suspense>
       </main>
     </div>
   );

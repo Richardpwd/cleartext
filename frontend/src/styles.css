@@ -35,16 +35,20 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
+  font-size: 16px;
+  line-height: 1.5;
   background: radial-gradient(circle at top, rgba(79, 70, 229, 0.22), transparent 20%),
     radial-gradient(circle at bottom right, rgba(56, 189, 248, 0.16), transparent 16%),
     linear-gradient(180deg, var(--page-bg) 0%, #f8fbff 100%);
   color: var(--text);
-  animation: backgroundMove 14s ease infinite;
+  overflow-x: hidden;
 }
 
 body,
@@ -52,6 +56,7 @@ button,
 textarea,
 input {
   font-family: inherit;
+  font-size: inherit;
 }
 
 button {
@@ -67,6 +72,7 @@ input:focus-visible {
 }
 
 .app-shell {
+  width: min(100%, 1200px);
   max-width: 1200px;
   margin: 0 auto;
   padding: 30px 24px 40px;
@@ -128,6 +134,7 @@ input:focus-visible {
 .card,
 .document-card {
   position: relative;
+  min-width: 0;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 32px;
@@ -352,7 +359,6 @@ input:focus-visible {
   padding: 22px;
   text-align: center;
   color: var(--text-muted);
-  animation: pulseLight 4s ease-in-out infinite, shimmer 2.5s linear infinite;
 }
 
 .ad-placeholder::after {
@@ -361,9 +367,7 @@ input:focus-visible {
   inset: 0;
   border-radius: 24px;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  opacity: 0.35;
-  transform: translateX(-100%);
-  animation: slideGlow 2.8s ease-in-out infinite;
+  opacity: 0.1;
 }
 
 .ad-placeholder.top-banner {
@@ -429,6 +433,15 @@ input:focus-visible {
   }
 }
 
+.loading-screen {
+  min-height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
 @keyframes popFade {
   from {
     opacity: 0;
@@ -440,15 +453,14 @@ input:focus-visible {
   }
 }
 
-@keyframes backgroundMove {
-  0% {
-    background-position: 0% 0%, 100% 100%;
-  }
-  50% {
-    background-position: 100% 0%, 0% 100%;
-  }
-  100% {
-    background-position: 0% 0%, 100% 100%;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
@@ -470,6 +482,11 @@ input:focus-visible {
   }
 
   .app-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-card {
     flex-direction: column;
     align-items: stretch;
   }
